@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
@@ -13,14 +14,25 @@ public class Main {
 
         //Example usage with palindromes (strings):
         Collection<String> words = List.of("Level","hello","world","deified");
-        Predicate<String> isPlaindroms = s -> isPlaindrome(s);
+        Predicate<String> isPalindromes = Main::isPalindrome;
 
-        int plaindromeCount = CollectionPropertyCounter.countElementsWithProperty(words,isPlaindroms);
-        System.out.println("Count of plaindromes:" + plaindromeCount);
+        int palindromeCount = CollectionPropertyCounter.countElementsWithProperty(words,isPalindromes);
+        System.out.println("Count of palindromes:" + palindromeCount);
+
+
+        //Example usage with Generic Array:
+        int index1 = 1;
+        int index2 = 3;
+
+        Integer[] elements = {1, 2, 3, 4, 5};
+        System.out.println("Original Array:"+ Arrays.toString(elements));
+        ArrayElementExchanger.exchangeElements(elements,index1,index2);
+        System.out.println("Array after swapping elements at indices "+ index1 + " and"+ index2 + " :"+ Arrays.toString(elements));
+
 
     }
 
-    private static boolean isPlaindrome(String s) {
+    private static boolean isPalindrome(String s) {
         String clean = s.replaceAll("\\s+","").toLowerCase();
         int length = clean.length();
         for (int i = 0; i < length; i++){
